@@ -15,3 +15,16 @@ Flaskはユーザーインターフェイスを持つアプリを実装するた
 
 ## 最小限のアプリを作成する
 最小限の機能を持つアプリ `minimal_app` を作成する。
+
+* 作業用として、`apps/minimal_app` ディレクトリを作成する。
+    ```
+    % mkdir -p apps/minimal_app
+    ```
+* 次のようなディレクトリ構成でアプリ作成を進める。
+    ```
+    % tree
+    .
+    └── apps
+        └── minimal_app
+            └── app.py
+    ```
