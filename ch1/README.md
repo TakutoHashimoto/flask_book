@@ -9,4 +9,5 @@ Flaskはユーザーインターフェイスを持つアプリを実装するた
 
 一般的にはMVCモデルが有名だが、MVTのViewはMVCのC(Controller)、MVTのTemplateはMVCのViewに相当する。
 
-[mvt](../drawio/mvt.png)
+![mvc](../images/24406d24f9caae203df789bb7b6202e9023ed17b38bec5f8d6aac091247e47aa.png)  
+
