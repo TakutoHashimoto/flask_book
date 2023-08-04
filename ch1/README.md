@@ -16,15 +16,47 @@ Flaskはユーザーインターフェイスを持つアプリを実装するた
 ## 最小限のアプリを作成する
 最小限の機能を持つアプリ `minimal_app` を作成する。
 
-* 作業用として、`apps/minimal_app` ディレクトリを作成する。
-    ```
-    % mkdir -p apps/minimal_app
-    ```
-* 次のようなディレクトリ構成でアプリ作成を進める。
-    ```
-    % tree
-    .
-    └── apps
-        └── minimal_app
-            └── app.py
-    ```
+### 作業用として、`apps/minimal_app` ディレクトリを作成する
+```shell
+% mkdir -p apps/minimal_app
+```
+
+次のようなディレクトリ構成でアプリ作成を進める。
+```shell
+% tree
+.
+└── apps
+       └── minimal_app
+           └── app.py
+```
+
+### 環境変数を設定する
+2つの環境変数を以下のように設定する。
+
+| 環境変数  | 設定する値                                                                                         |
+| --------- | -------------------------------------------------------------------------------------------------- |
+| FLASK_APP | `app.py` のパス                                                                                    |
+| FLASK_ENV | `development` または `production` を指定する。`development` を指定するとデバッグモードがONになる。 |
+
+ターミナルで以下のように設定する。
+```shell
+% export FLASK_APP=app.py
+% export FLASK_ENV=development
+```
+
+### `flask run` コマンドで実行する
+`app/minimal_app` ディレクトリで `flask run` コマンドを実行する。実行すると以下のようなテキストがターミナルに出力される。
+
+```shell
+% flaks run
+    * Serving Flask app 'app.py'
+    * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+    * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+```
+
+`Running on http://~~~` と表示されているところのURLにブラウザからアクセスする。`Hello, Flask book!` と表示されていれば問題ない。
+
+### `.env` を使って環境変数を設定する
+環境変数の設定には `export` を使っていたが、この方法だと、一度設定した環境変数はターミナルを終了させると消されてしまう。コンソールの環境変数を永続化させる方法もあるが、それだとアプリを切り替えるたびに環境変数を設定し直す必要がある。
