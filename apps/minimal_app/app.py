@@ -86,16 +86,16 @@ def contact_complete():
 
 
 # ルーティング情報を出力する
-with app.test_request_context():
-    # /
-    print(url_for("index"))
-    # /hello/world
-    print(url_for("hello-endpoint", name="world"))
-    # /name/ichiro?page=1
-    print(url_for("show_name", name="ichiro", page=1))
+# with app.test_request_context():
+#     # /
+#     print(url_for("index"))
+#     # /hello/world
+#     print(url_for("hello-endpoint", name="world"))
+#     # /name/ichiro?page=1
+#     print(url_for("show_name", name="ichiro", page=1))
 
 
-with app.test_request_context("users?update=true"):
+with app.test_request_context("/users?update=true"):
     print(request.args.get("updated"))
     # => true
 
