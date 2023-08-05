@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, current_app, g, request
+from flask import Flask, render_template, url_for, current_app, g, request, redirect
 
 
 app = Flask(__name__)
@@ -33,6 +33,21 @@ print(g.connection)
 # => connection
 
 
+@app.route("/contact")
+def contact() -> "html":
+    return render_template("concat.heml")
+
+
+@app.route("/contact/complete", methods=["GET", "POST"])
+def contact_complete():
+    if request.method == "POST":
+        # TODO: メール送信の処理を実装する
+
+        return redirect(url_for("contact_complete"))
+
+    return render_template("contact_complete.html")
+
+
 # ルーティング情報を出力する
 with app.test_request_context():
     # /
@@ -41,6 +56,7 @@ with app.test_request_context():
     print(url_for("hello-endpoint", name="world"))
     # /name/ichiro?page=1
     print(url_for("show_name", name="ichiro", page=1))
+
 
 with app.test_request_context("users?update=true"):
     print(request.args.get("updated"))
