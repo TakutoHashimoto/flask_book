@@ -8,7 +8,7 @@ def index() -> str:
     return "Hello, Flask book!"
 
 
-@app.route("/hello")
+@app.route("/hello", methods=["GET"], endpoint="hello-endpoint")
 def hello() -> str:
     return "Hello, World!"
 
