@@ -35,7 +35,7 @@ print(g.connection)
 
 @app.route("/contact")
 def contact() -> "html":
-    return render_template("concat.heml")
+    return render_template("contact.html")
 
 
 @app.route("/contact/complete", methods=["GET", "POST"])
