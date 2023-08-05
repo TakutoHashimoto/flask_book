@@ -41,6 +41,11 @@ def contact() -> "html":
 @app.route("/contact/complete", methods=["GET", "POST"])
 def contact_complete():
     if request.method == "POST":
+        # form属性を使ってフォームの値を取得する
+        user_name = request.form["username"]
+        email = request.form["email"]
+        description = request.form["description"]
+
         # TODO: メール送信の処理を実装する
 
         return redirect(url_for("contact_complete"))
