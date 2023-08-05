@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, current_app, g
 
 
 app = Flask(__name__)
@@ -18,6 +18,19 @@ def hello(name: str) -> str:
 @app.route("/name/<name>")
 def show_name(name: str) -> "html":
     return render_template("index.html", name=name)
+
+
+# アプリケーションコンテキストを取得してスタックにpushする
+app.app_context().push()
+
+# current_appにアクセス可能になる
+print(current_app.name)
+# => apps.minimal_app.app
+
+# グローバルなテンポラリ領域に値を設定する
+g.connection = "connection"
+print(g.connection)
+# => connection
 
 
 # ルーティング情報を出力する
