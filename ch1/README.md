@@ -79,3 +79,11 @@ Flaskは内部で `python-dotenv` を呼び出しているため、`python-doten
 | ----------------- | ---------------------------------- |
 | `.env` がないとき | `flask run` を実行したディレクトリ |
 | `.env` があるとき | `.env` があるディレクトリ          |
+
+今後、複数のアプリを開発する際にVS Codeのウィンドウを切り替えなくても大丈夫なように、アプリケーションルートをルートディレクトリ配下に変更する。つまり、`.env` ファイルを `apps/minimal_app` から `flask_book` に移動させる。
+
+```shell
+flask_book % mv apps/minimal_app/.env .
+```
+
+`.env` で指定している `FLASK_APP` の値を `apps.minimal_app.app.py` に変更する。これでアプリケーションルートが `flask_book` に変わったので、`flask_book` ディレクトリから `flask run` コマンドを実行してみる。以前と同様 `Hello, Flask book!` と表示されていれば問題ない。
