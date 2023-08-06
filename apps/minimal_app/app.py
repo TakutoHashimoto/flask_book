@@ -1,3 +1,5 @@
+import logging
+from flask_debugtoolbar import DebugToolbarExtension
 from email_validator import validate_email, EmailNotValidError
 from flask import (
     Flask,
@@ -13,8 +15,12 @@ from flask import (
 
 app = Flask(__name__)
 
-# TODO: SECRET_KEYは環境変数から取得するように設定する
-app.config["SECRET_KEY"]
+app.config["SECRET_KEY"]  # TODO: SECRET_KEYは環境変数から取得するように設定する
+app.logger.setLevel(logging.DEBUG)
+# リダイレクトを中断しないようにする
+app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
+# DebugToolbarExtensionにアプリをセットする
+toolbar = DebugToolbarExtension(app)
 
 
 @app.route("/")
