@@ -12,6 +12,8 @@ from flask import (
 
 
 app = Flask(__name__)
+
+# TODO: SECRET_KEYは環境変数から取得するように設定する
 app.config["SECRET_KEY"]
 
 
